@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+.row {
+  display: grid;
+  gap: 20px;
+  grid-auto-columns: minmax(0, 50px);
+}

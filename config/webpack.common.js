@@ -1,9 +1,8 @@
 'use strict';
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 const {resolveRoot, genAssetPath, genUrlLoaderOptions} = require('./helpers')
@@ -31,7 +30,6 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "vue$": "vue/dist/vue.esm.js",
             '@': resolveRoot('src')
         },
         extensions: [
@@ -51,13 +49,7 @@ module.exports = {
         ],
     },
     module: {
-        noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
         rules: [
-            {
-                test: /\.vue$/,
-                include: resolveRoot('src'),
-                loader: 'vue-loader',
-            },
             {
                 test: /\.(js|jsx)$/,
                 include: [resolveRoot('src')],
@@ -115,6 +107,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             showErrors: true,
             cache: true,
@@ -126,8 +119,7 @@ module.exports = {
             generateStatsFile: true,
             statsFilename: resolveRoot('dist/stats.json'),
             statsOptions: {source: false}
-        }),
-        new VueLoaderPlugin(),
+        })
         // new Dotenv()
     ],
 

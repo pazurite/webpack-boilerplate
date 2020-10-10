@@ -18,14 +18,12 @@ module.exports = merge(commonConfig, {
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
                     {loader: 'css-loader', options: {sourceMap: true}},
                 ]
             },
             {
                 test: /\.(scss|sass)$/,
                 use: [
-                    'vue-style-loader',
                     {loader: 'css-loader', options: {sourceMap: true}},
                     {loader: 'sass-loader', options: {sourceMap: true}}
                 ]

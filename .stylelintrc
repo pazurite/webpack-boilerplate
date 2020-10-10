@@ -1,0 +1,49 @@
+{
+  "extends": [
+    "stylelint-config-prettier",
+    "stylelint-config-sass-guidelines"
+  ],
+  "rules": {
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "export",
+          "import",
+          "global",
+          "local",
+          "external"
+        ]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "v-deep"
+        ]
+      }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "from"
+        ]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "composes",
+          "compose-with"
+        ],
+        "ignoreSelectors": [
+          ":export",
+          "/^:import/"
+        ]
+      }
+    ]
+  }
+}

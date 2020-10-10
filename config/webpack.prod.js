@@ -6,13 +6,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const path = require('path')
+const {resolveRoot} = require('./helpers')
 const commonConfig = require('./webpack.common');
 
 module.exports = merge(commonConfig, {
     mode: 'production',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: resolveRoot('dist'),
         publicPath: '/',
         filename: 'js/[hash].js',
         chunkFilename: 'js/[id].[hash].chunk.js'
